@@ -5,9 +5,11 @@ import lombok.ToString;
 
 @ToString
 @Data
-public class MemberInput {
+public class ResetPasswordInput {
     private String userId;
     private String userName;
-    private String phone;
+
+    private String id;
     private String password;
+
 }

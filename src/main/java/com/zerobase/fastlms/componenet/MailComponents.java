@@ -14,14 +14,14 @@ import javax.mail.internet.MimeMessage;
 public class MailComponents {
     private final JavaMailSender javaMailSender;
 
-    public void sendMailTest(String email, String subject, String text) {
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("dmstndi12@gmail.com");
-        msg.setSubject("안녕하세요. 제로베이스 입니다.");
-        msg.setText("안녕하세요. 제로베이스 입니다. 반갑습니다.");
-
-        javaMailSender.send(msg);
-    }
+//    public void sendMailTest(String email, String subject, String text) {
+//        SimpleMailMessage msg = new SimpleMailMessage();
+//        msg.setTo("dmstndi12@gmail.com");
+//        msg.setSubject("안녕하세요. 제로베이스 입니다.");
+//        msg.setText("안녕하세요. 제로베이스 입니다. 반갑습니다.");
+//
+//        javaMailSender.send(msg);
+//    }
 
     public boolean sendMail(String email, String subject, String text) {
         boolean result = false;
