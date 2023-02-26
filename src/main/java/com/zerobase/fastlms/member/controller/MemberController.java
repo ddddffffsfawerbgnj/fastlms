@@ -106,6 +106,6 @@ public class MemberController {
 
         model.addAttribute("result", result);
 
-        return "member/reset_password_result1";
+        return "member/reset_password_result";
     }
 }
