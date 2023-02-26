@@ -35,7 +35,7 @@
         select count(*)
         from course
         where 1 = 1
-            <include refid="selectListWhere"></include>
+        <include refid="selectListWhere"></include>
 
     </select>
 
@@ -45,8 +45,8 @@
         select *
         from course
         where 1 = 1
-            <include refid="selectListWhere"></include>
-
+        <include refid="selectListWhere"/>
+        order by reg_dt desc
         limit #{pageStart}, #{pageEnd}
     </select>
 </mapper>
