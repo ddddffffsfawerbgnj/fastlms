@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>강좌 상세 페이지</title>
+    <style>
+        span.price {
+            text-decoration: line-through;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
+    <script>
+        $(function () {
+            $('#submitForm').on('submit', function (){
+
+                var $thisForm = $(this);
+
+                var url = '/api/course/req.api';
+                var parameter = {
+                    id: $thisForm.find('input[name=id]').val()
+                };
+
+                axios.post(url, parameter).then(function (response){
+
+                }).catch(function (err){
+
+                });
+
+                return false;
+            });
+        });
+    </script>
+
+</head>
+<body>
+<h1> 강좌 상세 정보 </h1>
+<div th:replace="/fragment/layout.html :: fragment-body-menu"></div>
+
+<div>
+    <h2>강좌명: <span th:text="${detail.subject}"></span></h2>
+    <div th:utext="${detail.contents}"></div>
+    <div>
+        <p>가격: <span th:text="${detail.price}">0</span></p>
+        <p>할인가: <span th:text="${detail.salePrice}">0</span></p>
+    </div>
+
+    <div>
+        <form id="submitForm" method="post">
+            <input type="hidden" name="id" th:value="${detail.id}"/>
+            <button type="submit">수강신청</button>
+            <a href="/course">강좌목록</a>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
