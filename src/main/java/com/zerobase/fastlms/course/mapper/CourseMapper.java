@@ -1,6 +1,6 @@
 package com.zerobase.fastlms.course.mapper;
 
-import com.zerobase.fastlms.course.CourseParam;
+import com.zerobase.fastlms.course.model.CourseParam;
 import com.zerobase.fastlms.course.dto.CourseDto;
 import org.apache.ibatis.annotations.Mapper;
 

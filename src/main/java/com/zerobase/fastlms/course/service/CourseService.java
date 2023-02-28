@@ -1,6 +1,8 @@
 package com.zerobase.fastlms.course.service;
 
-import com.zerobase.fastlms.course.CourseParam;
+import com.zerobase.fastlms.course.model.CourseParam;
+import com.zerobase.fastlms.course.model.ServiceResult;
+import com.zerobase.fastlms.course.model.TakeCourseInput;
 import com.zerobase.fastlms.course.dto.CourseDto;
 import com.zerobase.fastlms.course.model.CourseInput;
 
@@ -28,4 +30,7 @@ public interface CourseService {
 
     //프론트 강좌 상세 정보
     CourseDto frontDetail(long id);
+
+    //수강신청
+    ServiceResult req(TakeCourseInput parameter);
 }

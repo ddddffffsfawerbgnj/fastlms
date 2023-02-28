@@ -2,7 +2,7 @@ package com.zerobase.fastlms.course.controller;
 
 import com.zerobase.fastlms.admin.dto.CategoryDto;
 import com.zerobase.fastlms.admin.service.CategoryService;
-import com.zerobase.fastlms.course.CourseParam;
+import com.zerobase.fastlms.course.model.CourseParam;
 import com.zerobase.fastlms.course.dto.CourseDto;
 import com.zerobase.fastlms.course.service.CourseService;
 import lombok.RequiredArgsConstructor;
@@ -38,11 +38,12 @@ public class CourseController extends BaseController {
         model.addAttribute("categoryList", categoryList);
         model.addAttribute("courseTotalCount", courseTotalCount);
 
-        return "list";
+        return "course/index";
     }
 
     @GetMapping("/course/{id}")
     public String courseDetail(Model model, CourseParam parameter) {
+
         CourseDto detail = courseService.frontDetail(parameter.getId());
         model.addAttribute("detail", detail);
 

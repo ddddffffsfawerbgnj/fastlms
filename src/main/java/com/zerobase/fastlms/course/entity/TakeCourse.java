@@ -14,10 +14,10 @@ import java.time.LocalDateTime;
 @Builder
 @Data
 @Entity
-public class TakeCourse {
+public class TakeCourse implements TakeCourseCode {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     Long id;
 
     long courseId;
