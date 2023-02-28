@@ -13,6 +13,7 @@ public class ServiceResult {
 
     //디폴트 생성자
     public ServiceResult() {
+        result = true;
     }
 
     public ServiceResult(boolean result, String message) {
