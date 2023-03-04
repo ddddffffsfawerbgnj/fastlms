@@ -1,13 +1,13 @@
 package com.zerobase.fastlms.course.service;
 
-import com.zerobase.fastlms.course.model.CourseParam;
-import com.zerobase.fastlms.course.model.ServiceResult;
-import com.zerobase.fastlms.course.model.TakeCourseInput;
 import com.zerobase.fastlms.course.dto.CourseDto;
 import com.zerobase.fastlms.course.entity.Course;
 import com.zerobase.fastlms.course.entity.TakeCourse;
 import com.zerobase.fastlms.course.mapper.CourseMapper;
 import com.zerobase.fastlms.course.model.CourseInput;
+import com.zerobase.fastlms.course.model.CourseParam;
+import com.zerobase.fastlms.course.model.ServiceResult;
+import com.zerobase.fastlms.course.model.TakeCourseInput;
 import com.zerobase.fastlms.course.repository.CourseRepository;
 import com.zerobase.fastlms.course.repository.TakeCourseRepository;
 import lombok.RequiredArgsConstructor;
@@ -54,6 +54,8 @@ public class CourseServiceImpl implements CourseService {
                 .salePrice(parameter.getSalePrice())
                 .saleEndDt(saleEndDt)
                 .regDt(LocalDateTime.now())
+                .filename(parameter.getFilename())
+                .urlFilename(parameter.getUrlFilename())
                 .build();
         courseRepository.save(course);
 
@@ -79,6 +81,8 @@ public class CourseServiceImpl implements CourseService {
         course.setSalePrice(parameter.getSalePrice());
         course.setSaleEndDt(saleEndDt);
         course.setUpDt(LocalDateTime.now());
+        course.setFilename(parameter.getFilename());
+        course.setUrlFilename(parameter.getUrlFilename());
         courseRepository.save(course);
 
         return true;
@@ -176,8 +180,8 @@ public class CourseServiceImpl implements CourseService {
         String[] statusList = {TakeCourse.STATUS_REQ,
                 TakeCourse.STATUS_COMPLETE};
         long count = takeCourseRepository.countByCourseIdAndUserIdAndStatusIn(
-                        course.getId(), parameter.getUserId(),
-                        Arrays.asList(statusList)
+                course.getId(), parameter.getUserId(),
+                Arrays.asList(statusList)
         );
 
         if (count > 0) {
@@ -200,6 +204,14 @@ public class CourseServiceImpl implements CourseService {
         result.setMessage("");
 
         return result;
+    }
+
+    @Override
+    public List<CourseDto> listAll() {
+
+        List<Course> courseList = courseRepository.findAll();
+
+        return CourseDto.of(courseList);
     }
 
 }

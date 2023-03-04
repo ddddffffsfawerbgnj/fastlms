@@ -16,4 +16,8 @@ public class CourseInput {
 
     //삭제
     String idList;
+
+    //ADD
+    String filename;
+    String urlFilename;
 }

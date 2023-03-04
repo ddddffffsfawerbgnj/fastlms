@@ -37,4 +37,7 @@ public class Course {
 
     LocalDateTime regDt; //등록일
     LocalDateTime upDt; //수정일
+
+    String filename;
+    String urlFilename;
 }
